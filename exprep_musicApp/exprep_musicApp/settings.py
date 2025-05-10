@@ -30,12 +30,14 @@ ALLOWED_HOSTS = []
 MY_APPS = [
     'profiles',
     'albums',
+    'common',
 ]
 
 # Application definition
 
 INSTALLED_APPS = [
     'django.contrib.auth',
+    'django.contrib.admin',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
@@ -79,7 +81,7 @@ WSGI_APPLICATION = 'exprep_musicApp.wsgi.application'
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
-        "NAME": "musicApp_db",
+        "NAME": "musicapp_db",
         "USER": "postgres-user",
         "PASSWORD": "password",
         "HOST": "127.0.0.1",
@@ -124,7 +126,9 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
-STATICFILES_DIRS = BASE_DIR / 'static'
+STATICFILES_DIRS = [
+    BASE_DIR / 'static'
+]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
