@@ -4,7 +4,7 @@ from django.utils.deconstruct import deconstructible
 
 @deconstructible
 class OnlyLettersValidator:
-    def __init__(self, message):
+    def __init__(self, message=None):
         self.message = message
 
     @property
@@ -24,7 +24,7 @@ class OnlyLettersValidator:
 
 @deconstructible
 class MaxDigitsValidator:
-    def __init__(self, message):
+    def __init__(self, message=None):
         self.message = message
 
     @property

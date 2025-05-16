@@ -1,5 +1,5 @@
 from django.db import models
-from django.core.validators import MinLengthValidator
+from django.core.validators import MinLengthValidator, MinValueValidator
 from .validators import OnlyLettersValidator, MaxDigitsValidator
 
 # Create your models here.
@@ -25,7 +25,8 @@ class Author(models.Model):
             MaxDigitsValidator
         ]
     )
-    pets_numbers = models.SmallPositiveIntegerField()
+    pets_numbers = models.PositiveSmallIntegerField()
+
     info = models.TextField(
         blank=True,
         null=True,
