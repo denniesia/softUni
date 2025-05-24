@@ -28,3 +28,5 @@ class PostCreateForm(PostBaseForm):
         self.fields['title'].error_messages['unique'] = (
             "Oops! That title is already taken. How about something fresh and fun?"
         )
+
+

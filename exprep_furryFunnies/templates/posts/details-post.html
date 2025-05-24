@@ -9,15 +9,14 @@
     <!-- post image -->
     <img
       id="details-img"
-      src="https://cdn.pixabay.com/photo/2024/04/05/19/04/ai-generated-8678034_1280.jpg"
-      alt="My clever dog :)"
+      src="{{ post.image_url }}"
     />
     <!-- post title -->
-    <p id="details-title">My clever dog :)</p>
+    <p id="details-title">{{ post.title }}</p>
     <div id="info-wrapper">
       <div id="details-description">
         <!-- post content -->
-        <p>Einstein is the smartest dog ever!!!</p>
+        <p>{{ post.content }}</p>
       </div>
 
       <!--Edit and Delete buttons -->

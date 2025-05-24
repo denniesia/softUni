@@ -3,7 +3,7 @@ from django import forms
 from .models import  Post
 from .forms import  PostCreateForm
 from django.urls import reverse_lazy
-from django.views.generic import CreateView
+from django.views.generic import CreateView, DetailView
 from exprep_furryFunnies.utils import get_user_obj
 # Create your views here.
 
@@ -16,3 +16,10 @@ class PostCreateView(CreateView):
     def form_valid(self, form):
         form.instance.author = get_user_obj()
         return super().form_valid(form)
+
+class PostDetailsView(DetailView):
+    model = Post
+    pk_url_kwarg = 'id'
+    template_name = 'posts/details-post.html'
+
+
