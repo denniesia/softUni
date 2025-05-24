@@ -1,7 +1,7 @@
 from django.shortcuts import render
-from django.views.generic import CreateView, DetailView
+from django.views.generic import CreateView, DetailView, UpdateView
 from .models import Author
-from .forms import AuthorCreateForm
+from .forms import AuthorCreateForm, AuthorEditForm
 from django.urls import reverse_lazy
 from exprep_furryFunnies.utils import get_user_obj
 # Create your views here.
@@ -22,6 +22,15 @@ class AuthorDetailsView(DetailView):
         last_post = author.posts.last()
         context['last_post'] = last_post
         return context
+
+    def get_object(self, queryset=None):
+        return get_user_obj()
+
+class AuthorEditView(UpdateView):
+    model = Author
+    form_class = AuthorEditForm
+    template_name = 'authors/edit-author.html'
+    success_url = reverse_lazy('details-author')
 
     def get_object(self, queryset=None):
         return get_user_obj()
