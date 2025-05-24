@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.views.generic import CreateView, DetailView, UpdateView
+from django.views.generic import CreateView, DetailView, UpdateView, DeleteView
 from .models import Author
 from .forms import AuthorCreateForm, AuthorEditForm
 from django.urls import reverse_lazy
@@ -31,6 +31,13 @@ class AuthorEditView(UpdateView):
     form_class = AuthorEditForm
     template_name = 'authors/edit-author.html'
     success_url = reverse_lazy('details-author')
+
+    def get_object(self, queryset=None):
+        return get_user_obj()
+
+class AuthorDeleteView(DeleteView):
+    template_name = 'authors/delete-author.html'
+    success_url = reverse_lazy('index')
 
     def get_object(self, queryset=None):
         return get_user_obj()
