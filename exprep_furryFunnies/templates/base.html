@@ -1,3 +1,5 @@
+{% load static %}
+{% load get_user %}
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -19,6 +21,9 @@
 
         <nav>
           <!-- If there is an author's profile -->
+         {% get_user as profile %}
+            {% if profile %}
+
           <div class="user">
             <a href="#">Dashboard</a>
             <a href="#">New Post</a>
@@ -26,10 +31,14 @@
           </div>
 
           <!-- If author's profile has NOT been created -->
+            {% else %}
           <div class="guest">
             <a href="#">Create Author's Profile</a>
           </div>
+
+         {% endif %}
         </nav>
+
       </header>
         
         {% block content %}
