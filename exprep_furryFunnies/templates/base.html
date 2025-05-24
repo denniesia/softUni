@@ -33,7 +33,7 @@
           <!-- If author's profile has NOT been created -->
             {% else %}
           <div class="guest">
-            <a href="#">Create Author's Profile</a>
+            <a href="{% url 'create-author' %}">Create Author's Profile</a>
           </div>
 
          {% endif %}

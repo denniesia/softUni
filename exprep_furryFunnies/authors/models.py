@@ -25,7 +25,7 @@ class Author(models.Model):
             MaxDigitsValidator
         ]
     )
-    pets_numbers = models.PositiveSmallIntegerField()
+    pets_number = models.PositiveSmallIntegerField()
 
     info = models.TextField(
         blank=True,
