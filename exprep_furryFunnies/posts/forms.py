@@ -1,5 +1,6 @@
 from django import forms
 from .models import Post
+from exprep_furryFunnies.mixins import ReadOnlyMixin
 
 
 class PostBaseForm(forms.ModelForm):
@@ -32,3 +33,9 @@ class PostCreateForm(PostBaseForm):
 class PostEditForm(PostBaseForm):
    class Meta(PostBaseForm.Meta):
        fields = ('title', 'image_url', 'content', )
+
+class PostDeleteForm(PostBaseForm, ReadOnlyMixin):
+    read_only_fields = ['title', 'image_url', 'content']
+
+    class Meta(PostBaseForm.Meta):
+        fields = ('title', 'image_url', 'content', )

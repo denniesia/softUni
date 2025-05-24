@@ -5,5 +5,6 @@ urlpatterns = [
     path('<int:id>/', include([
         path('details/', views.PostDetailsView.as_view(), name='details-post'),
         path('edit/', views.PostEditView.as_view(), name='edit-post'),
+        path('delete/',views.PostDeleteView.as_view(), name='delete-post'),
     ])),
 ]
