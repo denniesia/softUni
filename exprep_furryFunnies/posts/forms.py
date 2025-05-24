@@ -29,4 +29,6 @@ class PostCreateForm(PostBaseForm):
             "Oops! That title is already taken. How about something fresh and fun?"
         )
 
-
+class PostEditForm(PostBaseForm):
+   class Meta(PostBaseForm.Meta):
+       fields = ('title', 'image_url', 'content', )
