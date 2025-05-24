@@ -8,5 +8,5 @@ class AuthorCreateView(CreateView):
 
     model = Author
     form_class = AuthorCreateForm
-    template_name = 'authors/create-author.html'
+    template_name = 'author/create-author.html'
     success_url = reverse_lazy('dashboard')
