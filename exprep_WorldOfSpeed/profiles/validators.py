@@ -12,7 +12,7 @@ class CustomMinCharValidator:
 
     @message.setter
     def message(self, value):
-        if self.message is None:
+        if value is None:
             self.__message = "Username must be at least 3 chars long!"
         else:
             self.__message = value
@@ -33,7 +33,7 @@ class AlphaNumericandUnderscoreValidator:
 
     @message.setter
     def message(self, value):
-        if self.message is None:
+        if value is None:
             self.__message = "Username must contain only letters, digits, and underscores!"
         else:
             self.__message = value
