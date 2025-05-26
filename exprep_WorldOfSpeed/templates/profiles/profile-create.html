@@ -6,8 +6,10 @@
 <section id="register-page" class="content auth">
 <form id="register" method="post">
   <div class="container">
-    {% csrf_token %}
-      {{ form }}
+      <h1 class="form-create-headline">Create Profile</h1>
+
+        {% csrf_token %}
+        {{ form }}
     <!-- Create Button -->
     <input class="btn submit" type="submit" value="Create Profile" />
   </div>

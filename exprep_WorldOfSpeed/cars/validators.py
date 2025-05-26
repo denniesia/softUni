@@ -18,5 +18,6 @@ class RangeValidator:
             self.__message = value
 
     def __call__(self, value):
+        value = int(value)
         if not 1999 <= value <= 2030:
             raise ValidationError(self.message)

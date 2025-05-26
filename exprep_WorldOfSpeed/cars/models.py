@@ -1,6 +1,6 @@
 from django.db import models
 from .choices import CarTypes
-from django.core.validators import MinValueValidator
+from django.core.validators import MinLengthValidator, MinValueValidator
 from .validators import RangeValidator
 
 # Create your models here.
@@ -12,7 +12,7 @@ class Car(models.Model):
     model = models.CharField(
         max_length=15,
         validators=[
-            MinValueValidator(1),
+            MinLengthValidator(1),
         ]
     )
     year = models.IntegerField(
