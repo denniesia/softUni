@@ -12,6 +12,7 @@ class CarCreateForm(CarBaseForm):
 
         widgets = {
             'image_url': forms.URLInput(attrs={'placeholder': 'https://...'}),
+
         }
 
     def clean_year(self):

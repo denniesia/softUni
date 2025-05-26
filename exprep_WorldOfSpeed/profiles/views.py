@@ -6,4 +6,4 @@ from django.urls import reverse_lazy
 class CreateProfileView(CreateView):
     template_name = 'profiles/profile-create.html'
     form_class = ProfileCreateForm
-    success_url = reverse_lazy('index')
+    success_url = reverse_lazy('catalogue')

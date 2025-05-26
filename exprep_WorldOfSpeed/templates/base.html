@@ -20,7 +20,7 @@
         <nav>
         {% get_user as profile %}
             {% if profile %}
-          <a href="#">Catalogue</a>
+          <a href="{% url 'catalogue' %}">Catalogue</a>
           <a href="{% url 'car-create' %}">Create Car</a>
           <a href="#">Profile</a>
             {% else %}
