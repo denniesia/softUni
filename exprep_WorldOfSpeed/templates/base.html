@@ -24,7 +24,7 @@
           <a href="#">Create Car</a>
           <a href="#">Profile</a>
             {% else %}
-          <a href="#">Create Profile</a>
+          <a href="{% url 'profile-create' %}">Create Profile</a>
          {% endif %}
         </nav>
       </header>
