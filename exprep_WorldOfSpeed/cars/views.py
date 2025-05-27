@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.urls import reverse_lazy
-from .forms import CarCreateForm, CarEditForm
+from .forms import CarCreateForm, CarEditForm, CarDeleteForm
 from django.views.generic import CreateView, ListView, DetailView, UpdateView, DeleteView
 from exprep_WorldOfSpeed.utils import  get_user_obj
 from .models import Car
@@ -39,3 +39,15 @@ class CarEditView(UpdateView):
     model = Car
     form_class = CarEditForm
     success_url = reverse_lazy('catalogue')
+
+class CarDeleteView(DeleteView):
+    template_name = 'cars/car-delete.html'
+    model = Car
+    form_class = CarDeleteForm
+    success_url = reverse_lazy('catalogue')
+
+    def get_initial(self):
+        return self.object.__dict__
+
+    def form_invalid(self, form):
+        return self.form_valid(form)

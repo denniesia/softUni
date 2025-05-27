@@ -24,3 +24,9 @@ class CarEditForm(CarBaseForm):
     class Meta:
         model = Car
         fields = ['type', 'model', 'year', 'image_url', 'price']
+
+class CarDeleteForm(CarBaseForm):
+    read_only_fields = ['type', 'model', 'year', 'image_url', 'price']
+    class Meta:
+        model = Car
+        fields = ['type', 'model', 'year', 'image_url', 'price']
