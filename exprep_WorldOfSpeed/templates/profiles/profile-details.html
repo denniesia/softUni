@@ -40,7 +40,7 @@
     <p class="description">Total price: {{ total_sum|floatformat:3 }}</p>
     <!-- Edit/Delete buttons -->
     <div class="buttons">
-      <a href="#" class="edit-button">Edit</a>
+      <a href="{% url 'profile-edit' %}" class="edit-button">Edit</a>
       <a href="#" class="delete-button">Delete</a>
     </div>
   </div>

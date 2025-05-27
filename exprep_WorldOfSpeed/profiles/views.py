@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.views.generic import  CreateView, DetailView, UpdateView, DeleteView
-from .forms import ProfileCreateForm
+from .forms import ProfileCreateForm, ProfileEditForm
 from django.urls import reverse_lazy
 from exprep_WorldOfSpeed.utils import get_user_obj
 from .models import Profile
@@ -22,3 +22,11 @@ class ProfileDetailsView(DetailView):
         total_sum = sum(car.price for car in total_all_cars )
         context['total_sum'] = total_sum
         return context
+
+class ProfileEditView(UpdateView):
+    template_name = 'profiles/profile-edit.html'
+    form_class = ProfileEditForm
+    success_url = reverse_lazy('profile-details')
+
+    def get_object(self, queryset=None):
+        return get_user_obj()

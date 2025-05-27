@@ -16,3 +16,7 @@ class ProfileCreateForm(ProfileBaseForm):
             'age': 'Age requirement: 21 years and above.',
         }
 
+class ProfileEditForm(ProfileBaseForm):
+    class Meta:
+        model = Profile
+        fields = ('username', 'email','age', 'password', 'first_name', 'last_name')
