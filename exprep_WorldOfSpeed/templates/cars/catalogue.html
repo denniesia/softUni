@@ -1,36 +1,35 @@
 {% extends 'base.html' %}
 
 {% block content %}
-{% if not object_list %}
-<!-- Display a paragraph: If there are no cars yet-->
-<p class="no-articles">No cars yet</p>
+{% if not cars %}
+      <!-- Display a paragraph: If there are no cars yet-->
+      <p class="no-articles">No cars yet</p>
 
-<!-- Display a card with information about each car (if any)-->
+      <!-- Display a card with information about each car (if any)-->
 {% else %}
-    {% for car in  object_list%}
-<section id="catalogue">
-<h1>Total cars: {{ object_list|length }}</h1>
+      <section id="catalogue">
+        <h1>Total cars: {{ car.count }}</h1>
+{% for car in cars %}
+        <!-- first car-->
+        <div class="car-card">
+          <div class="image-wrap">
+            <!-- car image -->
+            <img
+              src="{{ car.image_url }}"
+            />
+          </div>
+          <!-- car type -->
+          <h3>{{ car.type }}</h3>
+          <!-- car model -->
+          <h1>{{ car.model}}</h1>
+          <div class="details-buttons">
+            <!-- car details button -->
+            <a href="{% url 'car-detail' car.id %}" class="details-btn">Details</a>
+          </div>
+        </div>
 
-<!-- first car-->
-<div class="car-card">
-  <div class="image-wrap">
-    <!-- car image -->
-    <img
-      src="{{  car.image_url }}"
-    />
-  </div>
-  <!-- car type -->
-  <h3>{{ car.type }}</h3>
-  <!-- car model -->
-  <h1>{{ car.model}}</h1>
-  <div class="details-buttons">
-    <!-- car details button -->
-    <a href="{% url 'car-detail' car.id %}" class="details-btn">Details</a>
-      {% endfor %}
-  </div>
-</div>
-
+{% endfor %}
 {% endif %}
-</section>
+
 
 {% endblock %}

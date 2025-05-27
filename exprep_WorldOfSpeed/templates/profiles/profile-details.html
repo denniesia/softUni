@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-
+{% load static %}
 {% block content %}
 
 <!-- profile details section -->
@@ -8,23 +8,36 @@
 <div class="info-section">
   <div class="car-header">
     <!-- default profile image (if the user does NOT have any)-->
-    <img
-      class="car-img"
-      src="/static/images/default-profile.png"
-      alt="profile-image"
-    />
+      {% if object.profile_picture %}
+      	<img
+          class="car-img"
+          src="{{ object.profile_picture }}"
+
+        />
+      {% else %}
+        <img
+          class="car-img"
+          src="{% static 'images/default-profile.png' %}"
+          alt="profile-image"
+        />
+      {% endif %}
     <!-- if the user has a profile image -->
-    <img class="car-img" src="" alt="profile-image" />
     <!-- user full name (if any) -->
-    <h1>Ivan Ivanov</h1>
+    {% if object.first_name and object.last_name %}
+        <h1>{{ object.first_name }} {{ object.last_name }}</h1>
+    {% elif object.first_name  %}
+         <h1>{{ object.last_name }}</h1>
+    {% elif object.last_name  %}
+         <h1>{{ object.first_name }}</h1>
+    {% endif %}
     <!-- user username -->
-    <p class="description">Username: test_user</p>
+    <p class="description">Username: {{ object.username }}</p>
     <!-- user email -->
-    <p class="description">Email: test@test.com</p>
+    <p class="description">Email: {{ object.email }}</p>
     <!-- user age -->
-    <p class="description">Age: 21</p>
+    <p class="description">Age: {{ object.age }}</p>
     <!-- total price of all cars -->
-    <p class="description">Total price: 398000.000</p>
+    <p class="description">Total price: {{ total_sum|floatformat:3 }}</p>
     <!-- Edit/Delete buttons -->
     <div class="buttons">
       <a href="#" class="edit-button">Edit</a>
