@@ -18,3 +18,9 @@ class CarCreateForm(CarBaseForm):
     def clean_year(self):
         year = self.cleaned_data.get('year')
         return year
+
+
+class CarEditForm(CarBaseForm):
+    class Meta:
+        model = Car
+        fields = ['type', 'model', 'year', 'image_url', 'price']
