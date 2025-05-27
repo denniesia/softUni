@@ -1,8 +1,9 @@
 from django.shortcuts import render
 from django.urls import reverse_lazy
 from .forms import CarCreateForm
-from django.views.generic import CreateView, ListView
+from django.views.generic import CreateView, ListView, DetailView
 from exprep_WorldOfSpeed.utils import  get_user_obj
+from .models import Car
 # Create your views here.
 
 class CarCreateView(CreateView):
@@ -27,3 +28,7 @@ class CatalogueView(ListView):
         user = get_user_obj()
         context['cars'] = user.cars.all()
         return context
+
+class CarDetailsView(DetailView):
+    template_name = 'cars/car-details.html'
+    model = Car
