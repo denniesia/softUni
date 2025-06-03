@@ -11,8 +11,8 @@ from .forms import CreateUserForm
 class LoginView(auth_views.LoginView):
     template_name = 'accounts/login_user.html'
 
-    def get_success_url(self):
-        return reverse_lazy('index')
+    # def get_success_url(self):
+    #     return reverse_lazy('index')
 
 
 class RegisterUserView(views.CreateView):
