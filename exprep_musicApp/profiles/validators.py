@@ -21,3 +21,4 @@ class AlphaNumericValidator:
     def __call__(self, value):
         if value.lower() != slugify(value):
             raise ValidationError(self.message)
+
