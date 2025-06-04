@@ -1,0 +1,8 @@
+<form action="{% url 'register' %}" method="post">
+    {{ form.as_p }}
+    <button>Regiser</button>
+    or <a href="{% url 'login' %}">Login</a>
+
+    {% csrf_token %}
+
+</form>
