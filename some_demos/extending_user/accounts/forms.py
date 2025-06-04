@@ -6,3 +6,4 @@ UserModel = get_user_model()
 class CustomUserCreationForm(auth_forms.UserCreationForm):
     class Meta(auth_forms.UserCreationForm.Meta):
         model = UserModel
+        fields = auth_forms.UserCreationForm.Meta.fields + ('age',)
