@@ -24,3 +24,7 @@ class CustomUserCreationForm(auth_forms.UserCreationForm):
             profile.save()
         return user
 
+class CustomUserChangeForm(auth_forms.UserChangeForm):
+    class Meta(auth_forms.UserChangeForm.Meta):
+        model = UserModel
+        fields = '__all__'
