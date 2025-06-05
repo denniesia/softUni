@@ -11,6 +11,7 @@ class CustomUserCreationForm(auth_forms.UserCreationForm):
 
     class Meta(auth_forms.UserCreationForm.Meta):
         model = UserModel
+        fields = (UserModel.USERNAME_FIELD,)
         # fields = auth_forms.UserCreationForm.Meta.fields + ('age',)
 
     def save(self, commit=True):
