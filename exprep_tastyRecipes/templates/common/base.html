@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/static/style/style.css" />
+    <link rel="stylesheet" href="/style/style.css" />
     <title>TastyRecipesApp</title>
   </head>
 
@@ -23,19 +23,14 @@
         </nav>
       </header>
 
-      <section id="create-page" class="auth">
-        <div class="container">
-          <h1>Are you sure you want to delete your profile?</h1>
-          <!-- Delete Profile Form -->
-          <form id="delete">
-            <!-- Confirm Button -->
-            <input class="btn submit" type="submit" value="Yes" />
-          </form>
-        </div>
-        <!-- End Delete Profile Form -->
-      </section>
+    {% block content %}
+        <main>
 
-      <!-- Footer -->
+        </main>
+    {% endblock %}
+
+
+  <!-- footer -->
       <footer>&copy;SoftUni Team 2024. All rights reserved.</footer>
     </div>
   </body>
