@@ -8,15 +8,15 @@ class CapitalizeFirstNameValidator:
 
     @property
     def message(self):
-        return self.__mesage
+        return self.__message
 
     @message.setter
     def message(self, value):
-        if value is not None:
-            self.__message = value
+        if value is  None:
+            self.__message = "Name must start with a capital letter!"
         else:
-            self.message = "Name must start with a capital letter!"
+            self.__message = value
 
     def __call__(self, value):
         if value[0] != value[0].upper():
-            return ValidationError(self.message)
+            raise ValidationError(self.message)
