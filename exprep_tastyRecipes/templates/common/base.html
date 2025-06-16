@@ -19,7 +19,7 @@
                 {% if profile %}
                 <a href="#">Profile</a>
                 <!-- if the user has not created a profile -->
-                <a href="#">Create Recipe</a>
+                <a href="{% url 'recipe-create' %}">Create Recipe</a>
                 <!-- if the user has created a profile -->
                 <a href="#">Catalogue</a>
             {% else %}
