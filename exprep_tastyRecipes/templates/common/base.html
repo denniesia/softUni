@@ -1,9 +1,11 @@
+{% load static %}
+{% load get_user %}
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/style/style.css" />
+    <link rel="stylesheet" href="{% static 'style/style.css' %}" />
     <title>TastyRecipesApp</title>
   </head>
 
@@ -13,13 +15,17 @@
         <!-- Navigation Bar -->
         <h1><a class="index-navigation" href="#">Tasty Recipes</a></h1>
         <nav>
-          <!-- if the user has not created a profile -->
-          <a href="#">Create Profile</a>
+            {% get_user as profile %}
+                {% if profile %}
+                <a href="#">Profile</a>
+                <!-- if the user has not created a profile -->
+                <a href="#">Create Recipe</a>
+                <!-- if the user has created a profile -->
+                <a href="#">Catalogue</a>
+            {% else %}
+                <a href="#">Create Profile</a>
 
-          <!-- if the user has created a profile -->
-          <a href="#">Catalogue</a>
-          <a href="#">Create Recipe</a>
-          <a href="#">Profile</a>
+            {% endif %}
         </nav>
       </header>
 
