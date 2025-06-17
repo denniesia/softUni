@@ -1,8 +1,8 @@
 from django.shortcuts import render
-from django.views.generic import CreateView, ListView, DetailView
+from django.views.generic import CreateView, ListView, DetailView, UpdateView
 from .models import Recipe
 from django.urls import reverse_lazy
-from .forms import RecipeCreateForm
+from .forms import RecipeCreateForm, RecipeEditForm
 
 from exprep_tastyRecipes.utils import get_user_obj
 # Create your views here.
@@ -33,8 +33,10 @@ class RecipeDetailsView(DetailView):
         context['ingredients'] = [ingredient.strip() for ingredient in ingredients_str.split(', ')]
         return context
 
-
-
-
+class RecipeEditView(UpdateView):
+    model = Recipe
+    form_class = RecipeEditForm
+    template_name = 'recipe/edit-recipe.html'
+    success_url = reverse_lazy('catalogue')
 
 
