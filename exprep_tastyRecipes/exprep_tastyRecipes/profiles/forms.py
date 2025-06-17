@@ -4,13 +4,16 @@ from .models import Profile
 class ProfileBaseForm(forms.ModelForm):
     class Meta:
         model = Profile
-        fields = ['nickname', 'first_name', 'last_name', 'chef']
+        fields = ['nickname', 'first_name', 'last_name', 'chef', 'bio']
 
 
 class ProfileCreateForm(ProfileBaseForm):
     pass
 
 class ProfileDetailsForm(ProfileBaseForm):
+    pass
+
+class ProfileEditForm(ProfileBaseForm):
     pass
 
 
