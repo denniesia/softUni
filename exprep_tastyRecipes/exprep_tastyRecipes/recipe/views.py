@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.views.generic import CreateView, ListView
+from django.views.generic import CreateView, ListView, DetailView
 from .models import Recipe
 from django.urls import reverse_lazy
 from .forms import RecipeCreateForm
@@ -22,3 +22,19 @@ class CatalogueView(ListView):
     def get_queryset(self):
         queryset = Recipe.objects.all()
         return queryset
+
+class RecipeDetailsView(DetailView):
+    model = Recipe
+    template_name = 'recipe/details-recipe.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        ingredients_str = self.object.ingredients  # Example: "cheese, milk, eggs"
+        context['ingredients'] = [ingredient.strip() for ingredient in ingredients_str.split(', ')]
+        return context
+
+
+
+
+
+
