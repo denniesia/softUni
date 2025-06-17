@@ -8,7 +8,8 @@ class ProfileBaseForm(forms.ModelForm):
 
 
 class ProfileCreateForm(ProfileBaseForm):
-    pass
+    class Meta(ProfileBaseForm.Meta):
+        exclude = ['bio',]
 
 class ProfileDetailsForm(ProfileBaseForm):
     pass

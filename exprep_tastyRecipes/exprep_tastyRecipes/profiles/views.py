@@ -28,3 +28,4 @@ class ProfileEditView(UpdateView):
 class ProfileDeleteView(DeleteView):
     model = Profile
     template_name = 'profiles/delete-profile.html'
+    success_url = reverse_lazy('home')
