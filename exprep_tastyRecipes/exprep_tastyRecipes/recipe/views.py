@@ -1,8 +1,8 @@
 from django.shortcuts import render
-from django.views.generic import CreateView, ListView, DetailView, UpdateView
+from django.views.generic import CreateView, ListView, DetailView, UpdateView, DeleteView
 from .models import Recipe
 from django.urls import reverse_lazy
-from .forms import RecipeCreateForm, RecipeEditForm
+from .forms import RecipeCreateForm, RecipeEditForm, RecipeDeleteForm
 
 from exprep_tastyRecipes.utils import get_user_obj
 # Create your views here.
@@ -40,3 +40,14 @@ class RecipeEditView(UpdateView):
     success_url = reverse_lazy('catalogue')
 
 
+class RecipeDeleteView(DeleteView):
+    model = Recipe
+    template_name = 'recipe/delete-recipe.html'
+    form_class = RecipeDeleteForm
+    success_url = reverse_lazy('catalogue')
+
+    def get_initial(self):
+        return self.object.__dict__
+
+    def form_invalid(self, form):
+        return super().form_valid(form)
