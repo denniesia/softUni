@@ -3,4 +3,5 @@
   <component name="Black">
     <option name="sdkName" value="Python 3.13 (django_rest_demo)" />
   </component>
+  <component name="ProjectRootManager" version="2" project-jdk-name="Python 3.13 virtualenv at C:\Users\denni\PycharmProjects\djangoBasics-exams\some_demos\django_rest_demo\.venv" project-jdk-type="Python SDK" />
 </project>
