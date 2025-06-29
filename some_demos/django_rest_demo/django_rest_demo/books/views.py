@@ -10,7 +10,7 @@ from rest_framework import status
 from rest_framework.utils.representation import serializer_repr
 from rest_framework.views import APIView
 
-
+from drf_spectacular.utils import extend_schema
 # Create your views here.
 
 # Django View
@@ -74,7 +74,10 @@ class ListBooksView(APIView): #APIView is the base view
 #     queryset = Book.objects.all()
 #     serializer_class = BookSerializer
 
-
+@extend_schema(
+    request=BookSerializer,
+    responses={201: BookSerializer, 400: BookSerializer},
+    )
 class BookViewSet(APIView):
 
     @staticmethod
