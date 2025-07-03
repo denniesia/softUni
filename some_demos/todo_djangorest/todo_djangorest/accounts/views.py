@@ -1,10 +1,11 @@
 from django.template.context_processors import request
 from drf_spectacular.utils import extend_schema
-from todo_djangorest.accounts.serializers import UserSerializer, LoginRequestSerializer, LoginResponseSerializer
+from todo_djangorest.accounts.serializers import UserSerializer, LoginRequestSerializer, LoginResponseSerializer, \
+    LogoutRequestSerializer
 from django.contrib.auth import get_user_model, authenticate
 from rest_framework.generics import CreateAPIView
 from rest_framework.views import APIView
-from rest_framework.permissions import AllowAny
+from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.response import Response
 from rest_framework_simplejwt.tokens import RefreshToken
 
@@ -51,3 +52,32 @@ class LoginView(APIView):
            "message": "Successfully logged in.",
        }, status=status.HTTP_200_OK
        )
+
+@extend_schema(
+    tags=['auth'],
+    summary="Logout endpoint",
+    description="Blacklist the refresh token",
+    request=LogoutRequestSerializer,
+    responses={
+        200: LoginResponseSerializer,
+        400: 'Invalid or expired token',
+    }
+)
+class LogoutApiView(APIView):
+    #permission_classes = [IsAuthenticated] not needed since we have the default permission in the settings
+
+    def post(self, request, *args, **kwargs):
+        try:
+            refresh = request.data.get('refresh')
+            token = RefreshToken(refresh)
+            token.blacklist()
+            from rest_framework import status
+            return Response({
+                "message": "Successfully logged out.",
+            }, status=status.HTTP_200_OK)
+        except TokenError:
+            return Response(
+                {
+                    'error':'Invalid or expired token',
+                }, status=status.HTTP_400_BAD_REQUEST
+            )
