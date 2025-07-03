@@ -12,3 +12,15 @@ class UserSerializer(serializers.ModelSerializer):
     def create(self, validated_data):
         user = UserModel.objects.create_user(**validated_data)
         return user
+
+
+class LoginRequestSerializer(serializers.Serializer):
+    username = serializers.CharField()
+    password = serializers.CharField()
+
+    #returns accessToken, refresh TOken
+
+class LoginResponseSerializer(serializers.Serializer):
+    refresh = serializers.CharField()
+    access = serializers.CharField()
+    message = serializers.CharField()
